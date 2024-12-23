@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confession Letter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .letter-container {
+            font-size: 24px;
+            color: #343a40;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .hidden {
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="letter-container" id="letter"></div>
+
+    <script>
+        const confession = `
+        Dear Hannah,
+
+        I hope this message finds you well. There’s something I’ve been meaning to tell you for a long time.
+
+        The truth is... I have feelings for you. You’ve been on my mind every day, and I can’t keep this to myself anymore. I hope this doesn’t change anything between us, but I needed to be honest.
+
+        Sincerely,
+        michael ramirez`;
+
+        const container = document.getElementById('letter');
+        let index = 0;
+
+        function typeLetter() {
+            if (index < confession.length) {
+                const span = document.createElement('span');
+                span.textContent = confession[index];
+                span.classList.add('hidden');
+                container.appendChild(span);
+
+                setTimeout(() => {
+                    span.classList.remove('hidden');
+                }, 50);
+
+                index++;
+                setTimeout(typeLetter, 50);
+            }
+        }
+
+        typeLetter();
+    </script>
+</body>
+</html>
+
+
